@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import Store from './redux/Store.jsx'
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
-  <React.StrictMode>
+  //<React.StrictMode>
+<CookiesProvider>
+<Provider store={Store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    </Provider>
+    </CookiesProvider>,
+  //</React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
