@@ -4,9 +4,8 @@ import Header from './common/Header.jsx'
 import Footer from './common/Footer.jsx'
 import Routes from './Routes.jsx'
 import { connect } from "react-redux";
-
-
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class Main extends React.Component {
     constructor(props) {
@@ -22,6 +21,7 @@ class Main extends React.Component {
         return (
             <div id="main-wrapper" className="">
                 <div className="">
+                    <ToastContainer position={toast.POSITION.TOP_RIGHT} style={{ zIndex: 150000 }} />
                     <BrowserRouter>
                         <div id="my-app">
                             <Header />

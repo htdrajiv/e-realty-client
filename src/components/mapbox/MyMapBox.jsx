@@ -9,6 +9,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const mapTypes = {
     satellite: "satellite",
@@ -132,23 +133,31 @@ class MyMapBox extends React.Component {
         let viewport = {};
         let queryParams = new URLSearchParams(this.props.location.search);
         let searchText = queryParams.get("searchLocation");
-        if (searchText !== 'undefined' && searchText !== null) {
+        if (typeof searchText !== 'undefined' && searchText !== null) {
             $.ajax({
                 url: "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchText + ".json?access_token=" + token,
                 cache: false,
                 success: function (data) {
                     let features = data.features[0];
-                    viewport = {
-                        longitude: features["center"][0],
-                        latitude: features["center"][1],
-                        zoom: 15,
-                        transitionDuration: 2000,
-                        transitionInterpolator: new FlyToInterpolator(),
-                    };
-                    this.setState({
-                        viewport: viewport,
-                        searchLocation: features["place_name"]
-                    })
+                    if (typeof features !== 'undefined') {
+                        viewport = {
+                            longitude: features["center"][0],
+                            latitude: features["center"][1],
+                            zoom: 15,
+                            transitionDuration: 2000,
+                            transitionInterpolator: new FlyToInterpolator(),
+                        };
+                        this.setState({
+                            viewport: viewport,
+                            searchLocation: features["place_name"]
+                        })
+                    } else {
+                        toast.error("Not a valid address");
+                        this.setState({
+                            autoGeolocateControl: true
+                        })
+
+                    }
                 }.bind(this),
                 error: function (xhr, status, err) {
                     console.error(this.props.url, status, err.toString());
