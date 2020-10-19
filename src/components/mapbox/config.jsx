@@ -1,6 +1,6 @@
 import React from 'react';
 
-export let token = "";
+export let token = "pk.eyJ1IjoiaHRkcmFqaXYiLCJhIjoiY2thY3NsY2JkMDFqZTJzbWhjeGp6MjIybSJ9.FxrmiakBiGApMzQjzCphmg";
 
 export let styles = {
     "light": "mapbox://styles/mapbox/light-v9",

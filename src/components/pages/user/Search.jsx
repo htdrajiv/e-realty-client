@@ -21,8 +21,8 @@ function PropertyCards_Deck() {
                     <Card.Title>Card title</Card.Title>
                     <ImageLoader classNames="card-img" name="home.jpg" style={{ height: '100%', width: '100%' }} />
                     <Card.Text>
-                        This is a wider card.
-                        </Card.Text>
+                        Card Body
+                    </Card.Text>
                 </Card.Body>
                 <Card.Footer>
                     <small className="text-muted">Last updated 3 mins ago</small>
@@ -47,8 +47,8 @@ function PropertyCards_Row() {
                         <Card.Title>Card title</Card.Title>
                         <Card.Text>
                             <ImageLoader classNames="card-img" name="home.jpg" style={{ height: '20%', width: '20%' }} />
-                        This is a wider card.
-                    </Card.Text>
+                            Card Body
+                        </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                         <small className="text-muted">Last updated 3 mins ago</small>
